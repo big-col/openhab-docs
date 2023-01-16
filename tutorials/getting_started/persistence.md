@@ -58,6 +58,8 @@ The good thing about `rrd4j` is that the database never grows beyond a given siz
 However, the way it achieves this (replacing ten readings with the average of the ten readings as the data gets older) makes the database not work for all Item types.
 If you need to `restoreOnStartup` unsupported Item types, `MapDB` might be a better choice for you.
 
+There won't be an rrd4j.persist file created in the /etc/openhab/persistence folder. OH never writes to that folder, only reads. When there isn’t an rrd4j.persist file the default strategy is used which is to persist everything on everyChange and every minuted with restoreOnStartup (see the rrd4j’s add-on docs for more details).  In MainUI, you can see which persistence add-ons you have installed in Settings → Persistence where you can select from the installed persistence add-ons which one is to be the default.
+
 ## Why Bother with Persistence?
 
 The reason one would set up both the Model discussed in the previous tutorial and Persistence is that it will make creating your user interfaces much easier and much more rich.
